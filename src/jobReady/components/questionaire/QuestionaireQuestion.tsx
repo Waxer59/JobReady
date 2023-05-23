@@ -1,46 +1,95 @@
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import { ScaleOnHover } from '../../../components/Transitions'
+import useQuestionaire from '../../../hooks/useQuestionaire'
+import { QUESTIONS } from '../../data/questionsData'
+import { useState } from 'react'
+import { toast } from 'sonner'
 
-interface Props {
-  question: string
-  hasNext: boolean
-  hasPrev: boolean
-  exampleAnswer: string
-}
+export default function QuestionaireQuestion() {
+  const {
+    questionNumber,
+    nextQuestion,
+    prevQuestion,
+    answerQuestion,
+    answers
+  } = useQuestionaire()
+  const [currentAnswer, setCurrentAnswer] = useState<string>('')
 
-export default function QuestionaireQuestion({
-  question,
-  hasNext,
-  hasPrev,
-  exampleAnswer
-}: Props) {
+  const handleFinish = () => {
+    if (!AreAllAwnsersFilled() || currentAnswer === '') {
+      toast.error('Please fill all the questions')
+    }
+  }
+
+  const handleNextQuestion = () => {
+    answerQuestion(currentAnswer, questionNumber)
+    nextQuestion()
+    setCurrentAnswer(answers[questionNumber + 1] ?? '')
+  }
+
+  const handlePrevQuestion = () => {
+    answerQuestion(currentAnswer, questionNumber)
+    prevQuestion()
+    setCurrentAnswer(answers[questionNumber - 1])
+  }
+
+  const AreAllAwnsersFilled = (): boolean => {
+    for (const answer of Object.values(answers)) {
+      if (answer === '') {
+        return false
+      }
+    }
+    return true
+  }
+
   return (
-    <div className="mt-80 flex items-center justify-center gap-28">
-      {hasPrev && (
-        <ScaleOnHover className="flex flex-col items-center justify-center gap-2 cursor-pointer">
-          <AiOutlineLeft className="text-4xl text-gray-500" />
-          <span className="text-gray-500">Previous</span>
+    <div className="mt-80 flex items-center justify-center relative">
+      {questionNumber > 1 && (
+        <ScaleOnHover>
+          <button
+            className="flex flex-col items-center justify-center gap-2 cursor-pointer"
+            onClick={handlePrevQuestion}>
+            <AiOutlineLeft className="text-xl sm:text-4xl text-gray-500" />
+            <span className="text-gray-500">Previous</span>
+          </button>
         </ScaleOnHover>
       )}
 
-      <div className="flex flex-col items-center justify-center gap-10">
-        <h3 className="text-center text-4xl font-medium">{question}</h3>
-        <input
-          type="text"
-          className="border-[1px] border-gray-500 rounded focus:outline-none w-full p-2"
-          placeholder={exampleAnswer}
-        />
-        <ScaleOnHover>
-          <button className="px-12 py-4 text-sm text-gray-500 bg-primary rounded-lg border-[1px] border-gray-500 transition duration-300 hover:text-white hover:bg-black">
-            Send
-          </button>
-        </ScaleOnHover>
+      <div className="flex flex-col items-center justify-center gap-10 w-1/2">
+        <div className="flex flex-col items-center justify-center gap-2">
+          <span className="text-gray-500">
+            {questionNumber} of {Object.keys(QUESTIONS).length}
+          </span>
+          <h3 className="text-center text-4xl font-medium">
+            {QUESTIONS[questionNumber].questionNumber}
+          </h3>
+        </div>
+        <textarea
+          className="border-[1px] border-gray-500 rounded focus:outline-none p-2 w-3/4 min-h-[150px] resize-none"
+          placeholder={QUESTIONS[questionNumber].exampleAnswer}
+          value={currentAnswer}
+          onChange={(e) => {
+            setCurrentAnswer(e.target.value)
+          }}></textarea>
+        {questionNumber === Object.keys(QUESTIONS).length && (
+          <ScaleOnHover>
+            <button
+              className="px-6 sm:px-12 py-4 text-sm text-gray-500 bg-primary rounded-lg border-[1px] border-gray-500 transition duration-300 hover:text-white hover:bg-black"
+              onClick={handleFinish}>
+              Finish!
+            </button>
+          </ScaleOnHover>
+        )}
       </div>
 
-      {hasNext && (
-        <ScaleOnHover className="flex flex-col items-center justify-center gap-2 cursor-pointer">
-          <AiOutlineRight className="text-4xl text-gray-500" />
-          <span className="text-gray-500">Next</span>
+      {questionNumber < Object.keys(QUESTIONS).length && (
+        <ScaleOnHover>
+          <button
+            className="flex flex-col items-center justify-center gap-2 cursor-pointer"
+            onClick={handleNextQuestion}>
+            <AiOutlineRight className="text-xl sm:text-4xl text-gray-500" />
+            <span className="text-gray-500">Next</span>
+          </button>
         </ScaleOnHover>
       )}
     </div>

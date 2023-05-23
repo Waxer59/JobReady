@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-export function FadeInWhenVisible({ children }: { children: any }) {
+export function FadeInWhenVisible({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       initial="hidden"
@@ -20,7 +20,7 @@ export function ScaleOnHover({
   children,
   className = ''
 }: {
-  children: any
+  children: React.ReactNode
   className?: string
 }) {
   return (
