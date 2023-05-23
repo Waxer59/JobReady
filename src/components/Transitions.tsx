@@ -36,3 +36,21 @@ export function ScaleOnHover({
     </motion.div>
   )
 }
+
+export function FadeIn({
+  children,
+  className = ''
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      className={className}>
+      {children}
+    </motion.div>
+  )
+}

@@ -45,7 +45,7 @@ export default function QuestionaireQuestion() {
   }
 
   return (
-    <div className="mt-80 flex items-center justify-center relative">
+    <div className="flex items-center justify-center relative h-full">
       {questionNumber > 0 && (
         <ScaleOnHover>
           <button
@@ -57,17 +57,17 @@ export default function QuestionaireQuestion() {
         </ScaleOnHover>
       )}
 
-      <div className="flex flex-col items-center justify-center gap-10 w-1/2">
+      <div className="flex flex-col items-center justify-center gap-10 w-full">
         <div className="flex flex-col items-center justify-center gap-2">
           <span className="text-gray-500">
             {questionNumber + 1} of {QUESTIONS.length}
           </span>
-          <h3 className="text-center text-4xl font-medium">
+          <h3 className="text-center text-sm sm:text-xl font-medium max-w-lg">
             {QUESTIONS[questionNumber]?.question}
           </h3>
         </div>
         <textarea
-          className="border-[1px] border-gray-500 rounded focus:outline-none p-2 w-3/4 min-h-[150px] resize-none"
+          className="border-[1px] border-gray-500 rounded focus:outline-none p-2 w-3/4 min-h-[250px] resize-none"
           placeholder={QUESTIONS[questionNumber]?.exampleAnswer}
           value={currentAnswer}
           onChange={(e) => {
