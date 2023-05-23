@@ -25,8 +25,8 @@ module.exports = {
     '@typescript-eslint/restrict-plus-operands': 'off',
     'react/no-unescaped-entities': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
-    "@typescript-eslint/consistent-indexed-object-style": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off"
+    '@typescript-eslint/consistent-indexed-object-style': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off'
   },
   settings: {
     react: {

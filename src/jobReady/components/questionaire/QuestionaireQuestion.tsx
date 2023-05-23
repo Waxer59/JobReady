@@ -18,7 +18,9 @@ export default function QuestionaireQuestion() {
   const handleFinish = () => {
     if (!AreAllAwnsersFilled() || currentAnswer === '') {
       toast.error('Please fill all the questions')
+      // return
     }
+    // ...
   }
 
   const handleNextQuestion = () => {
@@ -44,7 +46,7 @@ export default function QuestionaireQuestion() {
 
   return (
     <div className="mt-80 flex items-center justify-center relative">
-      {questionNumber > 1 && (
+      {questionNumber > 0 && (
         <ScaleOnHover>
           <button
             className="flex flex-col items-center justify-center gap-2 cursor-pointer"
@@ -58,20 +60,20 @@ export default function QuestionaireQuestion() {
       <div className="flex flex-col items-center justify-center gap-10 w-1/2">
         <div className="flex flex-col items-center justify-center gap-2">
           <span className="text-gray-500">
-            {questionNumber} of {Object.keys(QUESTIONS).length}
+            {questionNumber + 1} of {QUESTIONS.length}
           </span>
           <h3 className="text-center text-4xl font-medium">
-            {QUESTIONS[questionNumber].questionNumber}
+            {QUESTIONS[questionNumber]?.question}
           </h3>
         </div>
         <textarea
           className="border-[1px] border-gray-500 rounded focus:outline-none p-2 w-3/4 min-h-[150px] resize-none"
-          placeholder={QUESTIONS[questionNumber].exampleAnswer}
+          placeholder={QUESTIONS[questionNumber]?.exampleAnswer}
           value={currentAnswer}
           onChange={(e) => {
             setCurrentAnswer(e.target.value)
           }}></textarea>
-        {questionNumber === Object.keys(QUESTIONS).length && (
+        {questionNumber + 1 === QUESTIONS.length && (
           <ScaleOnHover>
             <button
               className="px-6 sm:px-12 py-4 text-sm text-gray-500 bg-primary rounded-lg border-[1px] border-gray-500 transition duration-300 hover:text-white hover:bg-black"
@@ -82,7 +84,7 @@ export default function QuestionaireQuestion() {
         )}
       </div>
 
-      {questionNumber < Object.keys(QUESTIONS).length && (
+      {questionNumber + 1 < QUESTIONS.length && (
         <ScaleOnHover>
           <button
             className="flex flex-col items-center justify-center gap-2 cursor-pointer"

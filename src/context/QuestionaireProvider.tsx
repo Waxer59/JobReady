@@ -6,12 +6,12 @@ export default function QuestionaireProvider({
 }: {
   children: React.ReactNode
 }) {
-  const [questionNumber, setQuestion] = useState(1)
+  const [questionNumber, setQuestionNumber] = useState(0)
   const [answers, setAnswers] = useState({})
 
   return (
     <QuestionaireContext.Provider
-      value={{ questionNumber, setQuestion, answers, setAnswers }}>
+      value={{ questionNumber, setQuestionNumber, answers, setAnswers }}>
       {children}
     </QuestionaireContext.Provider>
   )
