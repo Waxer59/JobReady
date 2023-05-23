@@ -23,8 +23,8 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 'off',
     'react/prop-types': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
-    "react/no-unescaped-entities": "off",
-    "@typescript-eslint/triple-slash-reference": "off"
+    'react/no-unescaped-entities': 'off',
+    '@typescript-eslint/triple-slash-reference': 'off'
   },
   settings: {
     react: {
