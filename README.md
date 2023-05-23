@@ -9,3 +9,17 @@ JobReady is a platform that helps you find your ideal job. By connecting you to 
 ### How does it work?
 
 First, you will be asked a few questions to determine which job is the best fit for you. This will be followed by a mock interview with 7 questions. At the end, you will receive a score and suggestions for improvement. Discover the ideal job for you and hone your interviewing skills with JobReady, your partner on the road to career success.
+
+### Technologies used
+
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [React router DOM](https://reactrouter.com/)
+- [Framer motion](https://www.framer.com/)
+- [React rough notation](https://roughnotation.com/)
+
+#### API's
+
+- [InfoJobs API](https://developer.infojobs.net/)
+- [OpenAI API](https://platform.openai.com/)

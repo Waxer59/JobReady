@@ -15,3 +15,24 @@ export function FadeInWhenVisible({ children }: { children: any }) {
     </motion.div>
   )
 }
+
+export function ScaleOnHover({
+  children,
+  className = ''
+}: {
+  children: any
+  className?: string
+}) {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.9 }}
+      transition={{
+        type: 'tween',
+        delay: 0
+      }}
+      className={className}>
+      {children}
+    </motion.div>
+  )
+}
