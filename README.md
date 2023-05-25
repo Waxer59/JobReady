@@ -18,6 +18,9 @@ First, you will be asked a few questions to determine which job is the best fit 
 - [React router DOM](https://reactrouter.com/)
 - [Framer motion](https://www.framer.com/)
 - [React rough notation](https://roughnotation.com/)
+- [React spinners](https://www.npmjs.com/package/react-spinners)
+- [React icons](https://react-icons.github.io/react-icons)
+- [Sonner](https://sonner.emilkowal.ski/)
 
 #### API's
 
