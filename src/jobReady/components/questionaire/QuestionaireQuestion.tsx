@@ -11,16 +11,17 @@ export default function QuestionaireQuestion() {
     nextQuestion,
     prevQuestion,
     answerQuestion,
-    answers
+    answers,
+    finishQuestionaire
   } = useQuestionaire()
   const [currentAnswer, setCurrentAnswer] = useState<string>('')
 
   const handleFinish = () => {
     if (!AreAllAwnsersFilled() || currentAnswer === '') {
       toast.error('Please fill all the questions')
-      // return
+      return
     }
-    // ...
+    finishQuestionaire()
   }
 
   const handleNextQuestion = () => {

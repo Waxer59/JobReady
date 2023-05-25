@@ -8,10 +8,18 @@ export default function QuestionaireProvider({
 }) {
   const [questionNumber, setQuestionNumber] = useState(0)
   const [answers, setAnswers] = useState({})
+  const [isFinished, setIsFinished] = useState(false)
 
   return (
     <QuestionaireContext.Provider
-      value={{ questionNumber, setQuestionNumber, answers, setAnswers }}>
+      value={{
+        questionNumber,
+        setQuestionNumber,
+        answers,
+        setAnswers,
+        isFinished,
+        setIsFinished
+      }}>
       {children}
     </QuestionaireContext.Provider>
   )

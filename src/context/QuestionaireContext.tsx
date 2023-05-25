@@ -7,11 +7,15 @@ export interface IQuestionaireContext {
     [key: string]: string
   }
   setAnswers: (answers: object) => void
+  isFinished: boolean
+  setIsFinished: (isFinished: boolean) => void
 }
 
 export const QuestionaireContext = createContext<IQuestionaireContext>({
   questionNumber: 0,
   setQuestionNumber: () => {},
   answers: {},
-  setAnswers: () => {}
+  setAnswers: () => {},
+  isFinished: false,
+  setIsFinished: () => {}
 })

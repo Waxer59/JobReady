@@ -3,8 +3,14 @@ import { QuestionaireContext } from '../context/QuestionaireContext'
 import { QUESTIONS } from '../jobReady/data/questionsData'
 
 export default function useQuestionaire() {
-  const { questionNumber, setQuestionNumber, answers, setAnswers } =
-    useContext(QuestionaireContext)
+  const {
+    questionNumber,
+    setQuestionNumber,
+    answers,
+    setAnswers,
+    isFinished,
+    setIsFinished
+  } = useContext(QuestionaireContext)
 
   function nextQuestion() {
     if (questionNumber + 1 > QUESTIONS.length) {
@@ -27,11 +33,17 @@ export default function useQuestionaire() {
     })
   }
 
+  function finishQuestionaire() {
+    setIsFinished(true)
+  }
+
   return {
     nextQuestion,
     prevQuestion,
     answerQuestion,
+    finishQuestionaire,
     questionNumber,
-    answers
+    answers,
+    isFinished
   }
 }
