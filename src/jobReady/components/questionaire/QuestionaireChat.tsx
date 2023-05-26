@@ -17,7 +17,7 @@ export default function QuestionaireChat() {
     if (messageEl.current) {
       messageEl.current.scrollTop = messageEl.current.scrollHeight
     }
-  }, [])
+  }, [messages])
 
   function handleSendMessage() {
     if (!messageInput.current?.value) {
