@@ -6,8 +6,10 @@ import QuestionaireQuestion from '../components/questionaire/QuestionaireQuestio
 export default function QuestionairePage() {
   const { isFinished } = useQuestionaire()
   return (
-    <FadeIn className="h-full">
-      {isFinished ? <QuestionaireJobs /> : <QuestionaireQuestion />}
-    </FadeIn>
+    <>
+      <FadeIn className="h-full">
+        {isFinished ? <QuestionaireJobs /> : <QuestionaireQuestion />}
+      </FadeIn>
+    </>
   )
 }

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion'
+import { useEffect } from 'react'
 
 export function FadeInWhenVisible({ children }: { children: React.ReactNode }) {
   return (
@@ -52,5 +53,35 @@ export function FadeIn({
       className={className}>
       {children}
     </motion.div>
+  )
+}
+
+export default function AnimateIncreaseNumber({
+  number,
+  className = ''
+}: {
+  number: number
+  className?: string
+}) {
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, Math.round)
+
+  useEffect(() => {
+    const animation = animate(count, number, { duration: 10 })
+
+    return animation.stop
+  }, [])
+
+  return (
+    <motion.span
+      className={`opacity-100 ${className}`}
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.3,
+        delay: number * 0.1
+      }}>
+      {rounded}
+    </motion.span>
   )
 }
