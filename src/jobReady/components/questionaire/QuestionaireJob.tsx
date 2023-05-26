@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi'
 
 import { HiOutlineArrowTopRightOnSquare } from 'react-icons/hi2'
+import useQuestionaireJobs from '../../../hooks/useQuestionaireJobs'
 
 interface Props {
   img: string
@@ -18,10 +19,15 @@ export default function QuestionaireJob({
   shortDescription,
   offerLink
 }: Props) {
+  const { selectOffer } = useQuestionaireJobs()
   const [isExpanded, setIsExpanded] = useState(false)
 
   const handleExpand = () => {
     setIsExpanded(!isExpanded)
+  }
+
+  const handleSelectOffer = () => {
+    selectOffer(description)
   }
 
   return (
@@ -48,7 +54,9 @@ export default function QuestionaireJob({
       </div>
       <div className={`${isExpanded ? 'block' : 'hidden'} flex flex-col gap-4`}>
         <p className="text-sm max-w-[300px] mx-auto">{description}</p>
-        <button className="p-2 text-xs text-gray-500 bg-primary rounded-lg border-[1px] border-gray-500 transition duration-300 hover:text-white hover:bg-black">
+        <button
+          onClick={handleSelectOffer}
+          className="p-2 text-xs text-gray-500 bg-primary rounded-lg border-[1px] border-gray-500 transition duration-300 hover:text-white hover:bg-black">
           Start with this offer!
         </button>
       </div>
