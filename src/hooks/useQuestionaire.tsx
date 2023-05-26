@@ -8,8 +8,8 @@ export default function useQuestionaire() {
     setQuestionNumber,
     answers,
     setAnswers,
-    isFinished,
-    setIsFinished
+    isQuestionaireFinished,
+    setIsQuestionaireFinished
   } = useContext(QuestionaireContext)
 
   function nextQuestion() {
@@ -34,7 +34,7 @@ export default function useQuestionaire() {
   }
 
   function finishQuestionaire() {
-    setIsFinished(true)
+    setIsQuestionaireFinished(true)
   }
 
   return {
@@ -44,6 +44,6 @@ export default function useQuestionaire() {
     finishQuestionaire,
     questionNumber,
     answers,
-    isFinished
+    isQuestionaireFinished
   }
 }

@@ -6,13 +6,13 @@ import QuestionaireJobs from '../components/questionaire/QuestionaireJobs'
 import QuestionaireQuestion from '../components/questionaire/QuestionaireQuestion'
 
 export default function QuestionairePage() {
-  const { isFinished } = useQuestionaire()
+  const { isQuestionaireFinished } = useQuestionaire()
   const { isOfferElected } = useQuestionaireJobs()
   return (
     <>
       <FadeIn className="h-full">
-        {!isFinished && <QuestionaireQuestion />}
-        {isFinished && !isOfferElected && <QuestionaireJobs />}
+        {!isQuestionaireFinished && <QuestionaireQuestion />}
+        {isQuestionaireFinished && !isOfferElected && <QuestionaireJobs />}
         {isOfferElected && <QuestionaireChat />}
       </FadeIn>
     </>

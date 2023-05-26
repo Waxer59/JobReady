@@ -8,7 +8,7 @@ export default function QuestionaireProvider({
 }) {
   const [questionNumber, setQuestionNumber] = useState(0)
   const [answers, setAnswers] = useState({})
-  const [isFinished, setIsFinished] = useState(false)
+  const [isQuestionaireFinished, setIsQuestionaireFinished] = useState(false)
 
   return (
     <QuestionaireContext.Provider
@@ -17,8 +17,8 @@ export default function QuestionaireProvider({
         setQuestionNumber,
         answers,
         setAnswers,
-        isFinished,
-        setIsFinished
+        isQuestionaireFinished,
+        setIsQuestionaireFinished
       }}>
       {children}
     </QuestionaireContext.Provider>

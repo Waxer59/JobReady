@@ -3,14 +3,17 @@ import AppRouter from './router/AppRouter'
 import QuestionaireProvider from './context/QuestionaireProvider'
 import { Toaster } from 'sonner'
 import QuestionaireJobsProvider from './context/QuestionaireJobsProvider'
+import QuestionaireInterviewProvider from './context/QuestionaireInterviewProvider'
 
 export default function App() {
   return (
     <BrowserRouter>
       <QuestionaireProvider>
         <QuestionaireJobsProvider>
-          <Toaster />
-          <AppRouter />
+          <QuestionaireInterviewProvider>
+            <Toaster />
+            <AppRouter />
+          </QuestionaireInterviewProvider>
         </QuestionaireJobsProvider>
       </QuestionaireProvider>
     </BrowserRouter>
