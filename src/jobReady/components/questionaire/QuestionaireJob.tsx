@@ -10,6 +10,7 @@ interface Props {
   description: string
   shortDescription: string
   offerLink: string
+  minRequirements: string
 }
 
 export default function QuestionaireJob({
@@ -17,7 +18,8 @@ export default function QuestionaireJob({
   title,
   description,
   shortDescription,
-  offerLink
+  offerLink,
+  minRequirements
 }: Props) {
   const { selectOffer } = useQuestionaireJobs()
   const [isExpanded, setIsExpanded] = useState(false)
@@ -32,7 +34,7 @@ export default function QuestionaireJob({
 
   return (
     <div className="bg-white p-2 rounded-md mr-2 shadow-lg flex flex-col gap-10 ">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <img src={img} className="w-28 h-28 rounded" alt="job" />
         <div className="flex flex-col max-w-[300px] text-center gap-4">
           <span className="text-lg font-medium">{title}</span>
@@ -53,6 +55,7 @@ export default function QuestionaireJob({
         </div>
       </div>
       <div className={`${isExpanded ? 'block' : 'hidden'} flex flex-col gap-4`}>
+        <p className="text-sm max-w-[300px] mx-auto">{minRequirements}</p>
         <p className="text-sm max-w-[300px] mx-auto">{description}</p>
         <button
           onClick={handleSelectOffer}

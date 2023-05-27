@@ -24,5 +24,6 @@ First, you will be asked a few questions to determine which job is the best fit 
 
 #### API's
 
+- [Netlify Functions](https://docs.netlify.com/functions/overview/)
 - [InfoJobs API](https://developer.infojobs.net/)
 - [OpenAI API](https://platform.openai.com/)
