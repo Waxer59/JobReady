@@ -8,7 +8,7 @@ interface IinfojobsGetOffers {
 export async function infojobsGetOffers({
   q,
   maxResults = 15
-}: IinfojobsGetOffers): Promise<InfojobsOfferResponse[] | null> {
+}: IinfojobsGetOffers): Promise<InfojobsOfferResponse[]> {
   try {
     const resp = await fetch(
       `/.netlify/functions/infojobsOffers?q=${q}&maxResults=${maxResults}`
@@ -17,6 +17,6 @@ export async function infojobsGetOffers({
     return data
   } catch (e) {
     console.error(e)
-    return null
+    return []
   }
 }

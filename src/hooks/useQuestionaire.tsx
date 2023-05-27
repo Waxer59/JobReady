@@ -9,7 +9,11 @@ export default function useQuestionaire() {
     answers,
     setAnswers,
     isQuestionaireFinished,
-    setIsQuestionaireFinished
+    setIsQuestionaireFinished,
+    isQuestionaireSelected,
+    setIsQuestionaireSelected,
+    isJobSearchSelected,
+    setIsJobSearchSelected
   } = useContext(QuestionaireContext)
 
   function nextQuestion() {
@@ -37,13 +41,25 @@ export default function useQuestionaire() {
     setIsQuestionaireFinished(true)
   }
 
+  function selectQuestionaire() {
+    setIsQuestionaireSelected(true)
+  }
+
+  function selectJobSearch() {
+    setIsJobSearchSelected(true)
+  }
+
   return {
     nextQuestion,
     prevQuestion,
     answerQuestion,
     finishQuestionaire,
+    selectQuestionaire,
+    selectJobSearch,
     questionNumber,
     answers,
-    isQuestionaireFinished
+    isQuestionaireFinished,
+    isQuestionaireSelected,
+    isJobSearchSelected
   }
 }

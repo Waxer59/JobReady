@@ -9,6 +9,10 @@ export interface IQuestionaireContext {
   setAnswers: (answers: object) => void
   isQuestionaireFinished: boolean
   setIsQuestionaireFinished: (isFinished: boolean) => void
+  setIsQuestionaireSelected: (isElected: boolean) => void
+  isQuestionaireSelected: boolean
+  setIsJobSearchSelected: (isJoBSearchSelected: boolean) => void
+  isJobSearchSelected: boolean
 }
 
 export const QuestionaireContext = createContext<IQuestionaireContext>({
@@ -17,5 +21,9 @@ export const QuestionaireContext = createContext<IQuestionaireContext>({
   answers: {},
   setAnswers: () => {},
   isQuestionaireFinished: false,
-  setIsQuestionaireFinished: () => {}
+  setIsQuestionaireFinished: () => {},
+  setIsQuestionaireSelected: () => {},
+  isQuestionaireSelected: false,
+  isJobSearchSelected: false,
+  setIsJobSearchSelected: () => {}
 })

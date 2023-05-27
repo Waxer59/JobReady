@@ -4,7 +4,7 @@ module.exports = {
     es2021: true
   },
   extends: ['plugin:react/recommended', 'standard-with-typescript', 'prettier'],
-  ignorePatterns: ['vite.config.ts', "netlify/"],
+  ignorePatterns: ['vite.config.ts', 'netlify/'],
   overrides: [],
   parserOptions: {
     parser: '@typescript-eslint/parser',

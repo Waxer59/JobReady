@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { QuestionaireInterviewContext } from './QuestionaireInterviewContext'
+import { QuestionaireInterviewContext } from '../QuestionaireInterviewContext'
 
 export default function QuestionaireInterviewProvider({
   children

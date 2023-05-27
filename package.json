@@ -21,7 +21,8 @@
     "react-rough-notation": "^1.0.3",
     "react-router-dom": "^6.11.2",
     "react-spinners": "^0.13.8",
-    "sonner": "^0.4.0"
+    "sonner": "^0.4.0",
+    "use-debounce": "^9.0.4"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",

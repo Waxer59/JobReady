@@ -1,4 +1,4 @@
-import { QuestionaireContext } from './QuestionaireContext'
+import { QuestionaireContext } from '../QuestionaireContext'
 import { useState } from 'react'
 
 export default function QuestionaireProvider({
@@ -9,6 +9,8 @@ export default function QuestionaireProvider({
   const [questionNumber, setQuestionNumber] = useState(0)
   const [answers, setAnswers] = useState({})
   const [isQuestionaireFinished, setIsQuestionaireFinished] = useState(false)
+  const [isQuestionaireSelected, setIsQuestionaireSelected] = useState(false)
+  const [isJobSearchSelected, setIsJobSearchSelected] = useState(false)
 
   return (
     <QuestionaireContext.Provider
@@ -18,7 +20,11 @@ export default function QuestionaireProvider({
         answers,
         setAnswers,
         isQuestionaireFinished,
-        setIsQuestionaireFinished
+        setIsQuestionaireFinished,
+        isQuestionaireSelected,
+        setIsQuestionaireSelected,
+        isJobSearchSelected,
+        setIsJobSearchSelected
       }}>
       {children}
     </QuestionaireContext.Provider>

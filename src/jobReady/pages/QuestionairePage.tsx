@@ -1,37 +1,53 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FadeIn } from '../../components/Transitions'
 import useQuestionaire from '../../hooks/useQuestionaire'
 import useQuestionaireJobs from '../../hooks/useQuestionaireJobs'
 import QuestionaireChat from '../components/questionaire/QuestionaireChat'
 import QuestionaireJobs from '../components/questionaire/QuestionaireJobs'
-import QuestionaireQuestion from '../components/questionaire/QuestionaireQuestion'
-import Footer from '../components/Footer'
 import { infojobsGetOffers } from '../../services/infoJobsAPI'
+import QuestionaireQuestion from '../components/questionaire/QuestionaireQuestion'
+import QuestionaireElection from '../components/questionaire/QuestionaireElection'
+import { toast } from 'sonner'
+import QuestionaireJobSearch from '../components/questionaire/QuestionaireJobSearch'
+import type { InfojobsOfferResponse } from '../../interfaces/infojobsAPIResponse'
 
 export default function QuestionairePage() {
-  const { isQuestionaireFinished } = useQuestionaire()
-  const { isOfferElected, selectOffers } = useQuestionaireJobs()
+  const [offers, setOffers] = useState<InfojobsOfferResponse[]>([])
+  const {
+    isQuestionaireFinished,
+    isQuestionaireSelected,
+    isJobSearchSelected
+  } = useQuestionaire()
+  const { isOfferElected } = useQuestionaireJobs()
 
   useEffect(() => {
-    async function setOffers() {
-      const offers = await infojobsGetOffers({ q: 'frontend developer' })
+    async function selectOffers() {
+      const offersResp = await infojobsGetOffers({ q: 'frontend developer' })
       if (!offers) {
-        throw new Error('No offers found')
+        toast.error('No offers found')
+        return
       }
-      selectOffers(offers)
+      setOffers(offersResp)
     }
     if (isQuestionaireFinished) {
-      setOffers()
+      selectOffers()
     }
   }, [isQuestionaireFinished])
 
   return (
     <>
       <FadeIn className="h-full">
-        {!isQuestionaireFinished && <QuestionaireQuestion />}
-        {isQuestionaireFinished && !isOfferElected && <QuestionaireJobs />}
+        {!isQuestionaireSelected && !isJobSearchSelected && (
+          <QuestionaireElection />
+        )}
+        {isJobSearchSelected && !isOfferElected && <QuestionaireJobSearch />}
+        {isQuestionaireSelected && !isQuestionaireFinished && (
+          <QuestionaireQuestion />
+        )}
+        {isQuestionaireFinished && !isOfferElected && (
+          <QuestionaireJobs offers={offers} />
+        )}
         {isOfferElected && <QuestionaireChat />}
-        <Footer />
       </FadeIn>
     </>
   )
