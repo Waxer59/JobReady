@@ -35,7 +35,7 @@ export default function QuestionaireChat() {
     <div className="overflow-auto">
       <h3 className="mt-24 text-xl font-medium text-center">Interview</h3>
       <div
-        className="mt-10 overflow-auto h-[650px] overflow-x-hidden scroll-x- w-full flex flex-col max-w-[800px] mx-auto gap-10"
+        className="mt-10 overflow-auto h-[650px] overflow-x-hidden scroll-x- w-full flex flex-col max-w-[800px] mx-auto gap-10 pb-4"
         ref={messageEl}>
         {messages.map((message, index) => (
           <ChatMessage

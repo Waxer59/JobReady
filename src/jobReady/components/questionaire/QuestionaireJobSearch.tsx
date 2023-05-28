@@ -9,16 +9,23 @@ export default function QuestionaireJobSearch() {
   const [search, setSearch] = useState('')
   const [value] = useDebounce(search, 1000)
   const [offers, setOffers] = useState<InfojobsOfferResponse[]>([])
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     async function selectOffers() {
       const offersResp = await infojobsGetOffers({ q: value })
-      if (!offers) {
+      if (value.trim() === '') {
+        setOffers([])
+        return
+      }
+      if (offersResp.length <= 0) {
         toast.error('No offers found')
+        setIsError(true)
         return
       }
       setOffers(offersResp)
     }
+    setIsError(false)
     selectOffers()
   }, [value])
 
@@ -32,7 +39,7 @@ export default function QuestionaireJobSearch() {
         onChange={(e) => setSearch(e.target.value)}
       />
       {value.trim() !== '' && (
-        <div className="flex flex-col justify-center gap-6">
+        <div className="flex flex-col justify-center gap-6 pb-6">
           {offers.map((offer) => (
             <QuestionaireJob
               title={offer.title}
@@ -44,9 +51,7 @@ export default function QuestionaireJobSearch() {
               key={offer.id}
             />
           ))}
-          {offers.length === 0 && value.trim() !== '' && (
-            <p className="text-center text-xl">No offers found :(</p>
-          )}
+          {isError && <p className="text-center text-xl">No offers found :(</p>}
         </div>
       )}
     </div>
