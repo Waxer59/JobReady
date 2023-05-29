@@ -14,7 +14,8 @@ import Loading from '../../components/Loading'
 import { getOpenaiResponse } from '../../services/openaiAPI'
 import {
   createCorrectInterviewQuestionPrompt,
-  createInterviewQuestionPrompt
+  createInterviewQuestionPrompt,
+  createSearchForAJobPrompt
 } from '../../helpers/createPrompts'
 import { useQuestionaireInterview } from '../../hooks/useQuestionaireInterview'
 import QuestionaireResults from '../components/questionaire/QuestionaireResults'
@@ -23,7 +24,8 @@ export default function QuestionairePage() {
   const {
     isQuestionaireFinished,
     isQuestionaireSelected,
-    isJobSearchSelected
+    isJobSearchSelected,
+    answers
   } = useQuestionaire()
   const { isOfferElected, isJobsLoading, offer } = useQuestionaireJobs()
   const {
@@ -41,14 +43,32 @@ export default function QuestionairePage() {
 
   useEffect(() => {
     async function selectOffers() {
-      const offersResp = await infojobsGetOffers({ q: 'frontend developer' })
-      if (!offers) {
+      const job = await getOpenaiResponse(
+        createSearchForAJobPrompt({
+          q1: answers[0],
+          q2: answers[1],
+          q3: answers[2],
+          q4: answers[3],
+          q5: answers[4]
+        })
+      )
+      if (!job) {
+        toast.error('Error while looking for your job')
+        return
+      }
+      const offersResp = await infojobsGetOffers({
+        q: job.data.choices[0].message.content
+      })
+      if (offers) {
+        setIsLoading(false)
+      } else {
         toast.error('No offers found')
         return
       }
       setOffers(offersResp)
     }
     if (isQuestionaireFinished) {
+      setIsLoading(true)
       selectOffers()
     }
   }, [isQuestionaireFinished])
