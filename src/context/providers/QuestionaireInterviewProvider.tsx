@@ -9,6 +9,8 @@ export default function QuestionaireInterviewProvider({
   const [isInterviewFinished, setIsInterviewFinished] = useState(false)
   const [score, setScore] = useState(0)
   const [feedBack, setFeedBack] = useState('')
+  const [isInterviewLoading, setIsInterviewLoading] = useState(false)
+  const [interviewAnswers, setInterviewAnswers] = useState([])
 
   return (
     <QuestionaireInterviewContext.Provider
@@ -18,7 +20,11 @@ export default function QuestionaireInterviewProvider({
         score,
         setScore,
         feedBack,
-        setFeedBack
+        setFeedBack,
+        isInterviewLoading,
+        setIsInterviewLoading,
+        interviewAnswers,
+        setInterviewAnswers
       }}>
       {children}
     </QuestionaireInterviewContext.Provider>

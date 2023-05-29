@@ -5,11 +5,15 @@ export interface IQuestionaireJobsContext {
   setOffer: (offer: string) => void
   isOfferElected: boolean
   setIsOfferElected: (isOfferElected: boolean) => void
+  isJobsLoading: boolean
+  setIsLoading: (isJobsLoading: boolean) => void
 }
 
 export const QuestionaireJobsContext = createContext<IQuestionaireJobsContext>({
   offer: '',
   setOffer: () => {},
   isOfferElected: false,
-  setIsOfferElected: () => {}
+  setIsOfferElected: () => {},
+  isJobsLoading: false,
+  setIsLoading: () => {}
 })

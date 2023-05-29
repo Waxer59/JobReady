@@ -7,14 +7,22 @@ export interface IQuestionaireInterviewContext {
   setScore: (score: number) => void
   feedBack: string
   setFeedBack: (feedBack: string) => void
+  isInterviewLoading: boolean
+  setIsInterviewLoading: (isInterviewLoading: boolean) => void
+  interviewAnswers: any[]
+  setInterviewAnswers: (interviewAnswers: any) => void
 }
 
 export const QuestionaireInterviewContext =
   createContext<IQuestionaireInterviewContext>({
     isInterviewFinished: false,
-    setIsInterviewFinished: (isFinished: boolean) => {},
+    setIsInterviewFinished: () => {},
     score: 0,
-    setScore: (score: number) => {},
+    setScore: () => {},
     feedBack: '',
-    setFeedBack: (feedBack: string) => {}
+    setFeedBack: () => {},
+    isInterviewLoading: false,
+    setIsInterviewLoading: () => {},
+    interviewAnswers: [],
+    setInterviewAnswers: () => {}
   })

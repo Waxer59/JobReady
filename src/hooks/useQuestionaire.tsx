@@ -49,6 +49,14 @@ export default function useQuestionaire() {
     setIsJobSearchSelected(true)
   }
 
+  function resetQuestionaire() {
+    setIsQuestionaireFinished(false)
+    setQuestionNumber(0)
+    setAnswers({})
+    setIsQuestionaireSelected(false)
+    setIsJobSearchSelected(false)
+  }
+
   return {
     nextQuestion,
     prevQuestion,
@@ -60,6 +68,7 @@ export default function useQuestionaire() {
     answers,
     isQuestionaireFinished,
     isQuestionaireSelected,
-    isJobSearchSelected
+    isJobSearchSelected,
+    resetQuestionaire
   }
 }

@@ -8,13 +8,17 @@ export default function QuestionaireJobsProvider({
 }) {
   const [offer, setOffer] = useState('')
   const [isOfferElected, setIsOfferElected] = useState(false)
+  const [isJobsLoading, setIsLoading] = useState(false)
+
   return (
     <QuestionaireJobsContext.Provider
       value={{
         offer,
         setOffer,
         isOfferElected,
-        setIsOfferElected
+        setIsOfferElected,
+        isJobsLoading,
+        setIsLoading
       }}>
       {children}
     </QuestionaireJobsContext.Provider>

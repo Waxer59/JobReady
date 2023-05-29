@@ -13,11 +13,11 @@ export default function QuestionaireJobSearch() {
 
   useEffect(() => {
     async function selectOffers() {
-      const offersResp = await infojobsGetOffers({ q: value })
       if (value.trim() === '') {
         setOffers([])
         return
       }
+      const offersResp = await infojobsGetOffers({ q: value })
       if (offersResp.length <= 0) {
         toast.error('No offers found')
         setIsError(true)

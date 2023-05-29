@@ -3,6 +3,7 @@ import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi'
 
 import { HiOutlineArrowTopRightOnSquare } from 'react-icons/hi2'
 import useQuestionaireJobs from '../../../hooks/useQuestionaireJobs'
+import { useQuestionaireInterview } from '../../../hooks/useQuestionaireInterview'
 
 interface Props {
   img: string
@@ -23,13 +24,15 @@ export default function QuestionaireJob({
 }: Props) {
   const { selectOffer } = useQuestionaireJobs()
   const [isExpanded, setIsExpanded] = useState(false)
+  const { interviewSetIsLoading } = useQuestionaireInterview()
 
   const handleExpand = () => {
     setIsExpanded(!isExpanded)
   }
 
   const handleSelectOffer = () => {
-    selectOffer(description)
+    interviewSetIsLoading(true)
+    selectOffer(`${description} ${minRequirements}`)
   }
 
   return (
