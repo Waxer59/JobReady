@@ -130,7 +130,6 @@ export default function QuestionairePage() {
 
       setFeedBackAndScore(message.replace(/Score: \d+/, ''), score)
     }
-    console.log(isInterviewFinished)
     if (isInterviewFinished) {
       interviewSetIsLoading(true)
       getInterviewFeedback()
