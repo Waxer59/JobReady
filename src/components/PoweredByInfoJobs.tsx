@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 export default function PoweredByInfoJobs() {
   return (
     <motion.a
-      className="fixed right-5 bottom-5 flex items-center font-thin text-sm xl:text-lg"
+      className="fixed right-5 bottom-5 flex items-center font-thin text-sm xl:text-lg z-10"
       whileHover={{ scale: 1.1 }}
       href="https://www.infojobs.net/"
       target="_blank"
