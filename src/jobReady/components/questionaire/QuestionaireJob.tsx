@@ -36,15 +36,19 @@ export default function QuestionaireJob({
   }
 
   return (
-    <div className="bg-white p-2 rounded-md mr-2 shadow-lg flex flex-col gap-10 ">
-      <div className="flex items-center justify-between gap-2">
+    <div className="bg-white p-2 rounded-md shadow-lg flex flex-col gap-10">
+      <div className="flex items-center justify-between gap-2 flex-col sm:flex-row">
         <img src={img} className="w-28 h-28 rounded" alt="job" />
         <div className="flex flex-col max-w-[300px] text-center gap-4">
-          <span className="text-lg font-medium">{title}</span>
-          <p>{shortDescription}</p>
+          <span className="text-md sm:text-lg font-medium">{title}</span>
+          <p className="text-sm sm:text-md">{shortDescription}</p>
         </div>
-        <div className="flex flex-col gap-20">
-          <a target="_blank" href={offerLink} rel="noreferrer">
+        <div className="flex justify-center sm:flex-col sm:gap-20 w-full sm:w-auto">
+          <a
+            target="_blank"
+            href={offerLink}
+            rel="noreferrer"
+            className="hidden sm:block">
             <HiOutlineArrowTopRightOnSquare />
           </a>
           <button onClick={handleExpand} className="self-end">
