@@ -64,12 +64,12 @@ export default function QuestionaireJob({
       <div className={`${isExpanded ? 'block' : 'hidden'} flex flex-col gap-4`}>
         <p className="text-sm max-w-[300px] mx-auto">{minRequirements}</p>
         <p className="text-sm max-w-[300px] mx-auto">{description}</p>
-        <button
-          onClick={handleSelectOffer}
-          className="p-2 text-xs text-gray-500 bg-primary rounded-lg border-[1px] border-gray-500 transition duration-300 hover:text-white hover:bg-black">
-          Start with this offer!
-        </button>
       </div>
+      <button
+        onClick={handleSelectOffer}
+        className="p-2 text-xs text-gray-500 bg-primary rounded-lg border-[1px] border-gray-500 transition duration-300 hover:text-white hover:bg-black">
+        Start with this offer!
+      </button>
     </div>
   )
 }
