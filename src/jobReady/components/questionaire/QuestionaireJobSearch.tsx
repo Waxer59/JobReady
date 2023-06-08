@@ -4,12 +4,23 @@ import type { InfojobsOfferResponse } from '../../../interfaces/infojobsAPIRespo
 import { infojobsGetOffers } from '../../../services/infoJobsAPI'
 import { toast } from 'sonner'
 import QuestionaireJob from './QuestionaireJob'
+import Loading from '../../../components/Loading'
 
 export default function QuestionaireJobSearch() {
   const [search, setSearch] = useState('')
   const [value] = useDebounce(search, 1000)
+  const [isLoading, setIsLoading] = useState(false)
   const [offers, setOffers] = useState<InfojobsOfferResponse[]>([])
   const [isError, setIsError] = useState(false)
+
+  useEffect(() => {
+    if (search) {
+      setIsLoading(true)
+      setOffers([])
+    } else {
+      setIsLoading(false)
+    }
+  }, [search])
 
   useEffect(() => {
     async function selectOffers() {
@@ -24,6 +35,7 @@ export default function QuestionaireJobSearch() {
         return
       }
       setOffers(offersResp)
+      setIsLoading(false)
     }
     setIsError(false)
     selectOffers()
@@ -38,6 +50,7 @@ export default function QuestionaireJobSearch() {
         className="p-2 focus:outline-none border-[1px] rounded-md border-gray-300 w-full max-w-[650px]"
         onChange={(e) => setSearch(e.target.value)}
       />
+      {isLoading && <Loading text='Searching...' className='mt-24'/>}
       {value.trim() !== '' && (
         <div className="flex flex-col justify-center gap-6 pb-6">
           {offers.map((offer) => (
