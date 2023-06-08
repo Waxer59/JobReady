@@ -10,7 +10,7 @@ JobReady is a platform that helps you find your ideal job. By connecting you to 
 
 First, you will be asked a few questions to determine which job is the best fit for you. This will be followed by a mock interview with 7 questions. At the end, you will receive a score and suggestions for improvement. Discover the ideal job for you and hone your interviewing skills with JobReady, your partner on the road to career success.
 
-##### Hackathon
+### Hackathon
 
 This project participated in the [Infojobs](https://www.infojobs.net/) Hackathon hosted by the streamer [Midudev](https://www.twitch.tv/midudev) and was one of the 15 selected!
 

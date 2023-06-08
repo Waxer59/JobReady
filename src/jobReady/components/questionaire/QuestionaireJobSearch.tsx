@@ -50,7 +50,7 @@ export default function QuestionaireJobSearch() {
         className="p-2 focus:outline-none border-[1px] rounded-md border-gray-300 w-full max-w-[650px]"
         onChange={(e) => setSearch(e.target.value)}
       />
-      {isLoading && <Loading text='Searching...' className='mt-24'/>}
+      {isLoading && <Loading text="Searching..." className="mt-24" />}
       {value.trim() !== '' && (
         <div className="flex flex-col justify-center gap-6 pb-6">
           {offers.map((offer) => (
