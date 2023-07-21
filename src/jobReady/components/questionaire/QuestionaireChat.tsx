@@ -34,7 +34,7 @@ export default function QuestionaireChat({ interviewQuestions }: Props) {
   }, [messages])
 
   useEffect(() => {
-    if (questions.length > 0) {
+    if (questions.length > 0 && questions.length >= 5) {
       newInterviewQuestion()
     }
   }, [])
@@ -42,12 +42,12 @@ export default function QuestionaireChat({ interviewQuestions }: Props) {
   function newInterviewQuestion() {
     setIsChatDisabled(true)
     const message = questions[0]
-    setQuestions((prevQuestions) => prevQuestions.slice(1))
     if (!message) {
       finishInterview()
       toast.success('Interview finished')
       return
     }
+    setQuestions((prevQuestions) => prevQuestions.slice(1))
     setMessages((prevMessages) => [
       ...prevMessages,
       { isHuman: false, message }

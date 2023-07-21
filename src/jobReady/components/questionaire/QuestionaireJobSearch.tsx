@@ -32,6 +32,7 @@ export default function QuestionaireJobSearch() {
       if (offersResp.length <= 0) {
         toast.error('No offers found')
         setIsError(true)
+        setIsLoading(false)
         return
       }
       setOffers(offersResp)
