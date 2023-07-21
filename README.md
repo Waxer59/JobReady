@@ -8,7 +8,7 @@ JobReady is a platform that helps you find your ideal job. By connecting you to 
 
 ### How does it work?
 
-First, you will be asked a few questions to determine which job is the best fit for you. This will be followed by a mock interview with 7 questions. At the end, you will receive a score and suggestions for improvement. Discover the ideal job for you and hone your interviewing skills with JobReady, your partner on the road to career success.
+First, you will be asked a few questions to determine which job is the best fit for you. This will be followed by a mock interview with 5 questions. At the end, you will receive a score and suggestions for improvement. Discover the ideal job for you and hone your interviewing skills with JobReady, your partner on the road to career success.
 
 ### Hackathon
 
