@@ -3,7 +3,12 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['plugin:react/recommended', 'standard-with-typescript', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'standard-with-typescript',
+    'plugin:react-hooks/recommended',
+    'prettier'
+  ],
   ignorePatterns: ['vite.config.ts', 'netlify/'],
   overrides: [],
   parserOptions: {
@@ -13,7 +18,7 @@ module.exports = {
     project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname
   },
-  plugins: ['react'],
+  plugins: ['react', 'react-refresh'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -26,7 +31,8 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
     '@typescript-eslint/consistent-indexed-object-style': 'off',
-    '@typescript-eslint/strict-boolean-expressions': 'off'
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    'react-hooks/exhaustive-deps': 'off'
   },
   settings: {
     react: {
