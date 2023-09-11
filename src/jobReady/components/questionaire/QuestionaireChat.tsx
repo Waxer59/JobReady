@@ -19,10 +19,15 @@ export default function QuestionaireChat({ interviewQuestions }: Props) {
     {
       isHuman: false,
       message: createInterviewPresentation()
+    },
+    {
+      isHuman: false,
+      message: interviewQuestions[0]
     }
   ])
+
   const [isChatDisabled, setIsChatDisabled] = useState(false)
-  const [questions, setQuestions] = useState(interviewQuestions)
+  const [questions, setQuestions] = useState(interviewQuestions.slice(1))
 
   const messageInput = useRef<HTMLInputElement>(null)
   const messageEl = useRef<HTMLDivElement>(null)
@@ -32,12 +37,6 @@ export default function QuestionaireChat({ interviewQuestions }: Props) {
       messageEl.current.scrollTop = messageEl.current.scrollHeight
     }
   }, [messages])
-
-  useEffect(() => {
-    if (questions.length > 0 && questions.length >= 5) {
-      newInterviewQuestion()
-    }
-  }, [])
 
   function newInterviewQuestion() {
     setIsChatDisabled(true)
